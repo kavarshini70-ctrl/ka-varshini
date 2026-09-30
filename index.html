@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Varshini K A | Data Science & Machine Learning Portfolio</title>
+  <meta name="description" content="Portfolio of Varshini K A - BCA (Data Science) Graduate from Presidency University. Specializing in Machine Learning, Computer Vision, Data Analysis, and AI Solutions with Live Interactive Projects.">
+  <meta name="keywords" content="Varshini K A, Data Science, Machine Learning, Portfolio, BCA, Presidency University, Computer Vision, Virtual Mouse, Disease Prediction, Python, MySQL">
+  <meta name="author" content="Varshini K A">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Varshini K A | Data Science & ML Portfolio">
+  <meta property="og:description" content="Interactive 3D Portfolio with Live ML & Computer Vision Projects.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome & Lucide Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Three.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body class="dark-theme">
+
+  <!-- Interactive Custom Cursor -->
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+  <!-- Ambient Sound Effect / Background Audio Player (Optional User Toggle) -->
+  <div class="audio-control-fixed">
+    <button class="sound-toggle-btn" id="soundToggleBtn" title="Toggle Ambient Data Science Lo-Fi Beat" aria-label="Toggle Sound">
+      <i class="fa-solid fa-volume-xmark" id="soundIcon"></i>
+      <span class="sound-label">Ambient Audio</span>
+    </button>
+  </div>
+
+  <!-- Background 3D Canvas -->
+  <canvas id="bg3dCanvas"></canvas>
+
+  <!-- Notification Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Header & Navigation -->
+  <header class="main-header" id="mainHeader">
+    <div class="header-inner container">
+      <a href="#hero" class="brand-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-name">Varshini</span>
+        <span class="logo-highlight">.AI</span>
+        <span class="logo-bracket">/&gt;</span>
+      </a>
+
+      <nav class="desktop-nav" id="desktopNav">
+        <a href="#hero" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="#about" class="nav-link"><i class="fa-solid fa-user-astronaut"></i> About</a>
+        <a href="#skills" class="nav-link"><i class="fa-solid fa-cubes"></i> 3D Skills</a>
+        <a href="#projects" class="nav-link"><i class="fa-solid fa-bolt"></i> Live Projects</a>
+        <a href="#certifications" class="nav-link"><i class="fa-solid fa-award"></i> Certs</a>
+        <a href="#hobbies" class="nav-link"><i class="fa-solid fa-icons"></i> Beyond Code</a>
+        <a href="#contact" class="nav-link"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="status-badge" title="Open to opportunities">
+          <span class="status-dot"></span>
+          <span class="status-text">Available for Roles</span>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+      <a href="#hero" class="mobile-nav-link">Home</a>
+      <a href="#about" class="mobile-nav-link">About & Education</a>
+      <a href="#skills" class="mobile-nav-link">3D Skills Universe</a>
+      <a href="#projects" class="mobile-nav-link">Live Projects</a>
+      <a href="#certifications" class="mobile-nav-link">Certifications</a>
+      <a href="#hobbies" class="mobile-nav-link">Beyond Code</a>
+      <a href="#contact" class="mobile-nav-link">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-tag">
+            <span class="tag-pulse"></span>
+            <span>BCA (Data Science) Graduate • Class of 2026</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text glow-text">Varshini K A</span>
+            <br>
+            <span class="typing-text-wrapper">
+              I specialize in <span class="typing-text" id="typingText"></span><span class="cursor-blink">|</span>
+            </span>
+          </h1>
+
+          <p class="hero-description">
+            Passionate Data Science graduate from <strong>Presidency University, Bangalore</strong> (CGPA: 8.2). 
+            Bridging the gap between raw data and real-world intelligence through <strong>Machine Learning</strong>, 
+            <strong>Computer Vision</strong>, and scalable analytics solutions.
+          </p>
+
+          <!-- Quick Metrics Bar -->
+          <div class="hero-metrics">
+            <div class="metric-card glass-panel">
+              <span class="metric-val" data-target="8.2">8.2</span>
+              <span class="metric-label">Degree CGPA</span>
+            </div>
+            <div class="metric-card glass-panel">
+              <span class="metric-val" data-target="2">2</span>
+              <span class="metric-label">Live AI Apps</span>
+            </div>
+            <div class="metric-card glass-panel">
+              <span class="metric-val" data-target="4">4</span>
+              <span class="metric-label">Certifications</span>
+            </div>
+            <div class="metric-card glass-panel">
+              <span class="metric-val" data-target="100">100%</span>
+              <span class="metric-label">Hands-on Driven</span>
+            </div>
+          </div>
+
+          <!-- Hero Actions -->
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary glow-btn">
+              <i class="fa-solid fa-play"></i> Launch Live Demos
+            </a>
+            <a href="#skills" class="btn btn-outline">
+              <i class="fa-solid fa-vr-cardboard"></i> Explore 3D Skills
+            </a>
+            <button class="btn btn-ghost" id="openResumeModalBtn">
+              <i class="fa-solid fa-file-invoice"></i> View Resume
+            </button>
+          </div>
+
+          <!-- Social Quick Links -->
+          <div class="hero-social-links">
+            <a href="https://www.linkedin.com/in/varshini-k-a-46965029a" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn Profile">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="mailto:kavarshini70@gmail.com" class="social-icon-btn" title="Email Varshini">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+            <a href="tel:+919019565856" class="social-icon-btn" title="Call Varshini">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+            <a href="https://wa.me/919019565856" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Chat on WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3D Interactive Hero Canvas Widget -->
+        <div class="hero-visual">
+          <div class="hero-3d-wrapper glass-panel">
+            <div class="hero-3d-header">
+              <div class="terminal-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="terminal-title">varshini_neural_mesh.py</div>
+              <div class="badge-live"><span class="live-dot"></span> 3D LIVE</div>
+            </div>
+            
+            <div id="hero3dContainer" class="hero-canvas-box">
+              <!-- Three.js neural mesh is injected here -->
+            </div>
+
+            <div class="hero-canvas-footer">
+              <div class="mesh-stat">
+                <i class="fa-solid fa-diagram-project"></i>
+                <span>Nodes: <strong id="nodeCount">85</strong></span>
+              </div>
+              <div class="mesh-stat">
+                <i class="fa-solid fa-wave-square"></i>
+                <span>Physics: <strong>Active</strong></span>
+              </div>
+              <button class="btn-micro" id="resetCameraBtn" title="Reset 3D view">
+                <i class="fa-solid fa-arrows-rotate"></i> Reset View
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-down-indicator">
+        <a href="#about" aria-label="Scroll Down">
+          <span>Explore Journey</span>
+          <i class="fa-solid fa-chevron-down bounce"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT & EDUCATION SECTION -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-subtitle"><i class="fa-solid fa-sparkles"></i> Background & Foundations</div>
+          <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+          <p class="section-desc">
+            Transforming complex data structures into actionable intelligence with precision, curiosity, and empathy.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Summary Card -->
+          <div class="about-card glass-panel">
+            <div class="about-avatar-wrap">
+              <div class="avatar-glow"></div>
+              <div class="avatar-circle">
+                <i class="fa-solid fa-brain-circuit"></i>
+              </div>
+            </div>
+            <h3 class="about-name">Varshini K A</h3>
+            <p class="about-role">Data Science Specialist & ML Developer</p>
+            <div class="about-location">
+              <i class="fa-solid fa-location-dot"></i> Bangalore, Karnataka, India
+            </div>
+
+            <p class="about-bio">
+              I am a BCA graduate in Data Science with a robust foundation in Data Analysis, Machine Learning, and Computer Vision. 
+              Proficient in Python, MySQL, and MS Excel with practical experience building AI-powered real-time systems. Skilled in 
+              data cleaning, feature engineering, predictive modeling, and translating raw data into meaningful insights that support 
+              high-impact decision-making.
+            </p>
+
+            <div class="about-strengths-tags">
+              <span class="tag"><i class="fa-solid fa-shield-halved"></i> Integrity & Confidentiality</span>
+              <span class="tag"><i class="fa-solid fa-clock"></i> Time Management</span>
+              <span class="tag"><i class="fa-solid fa-magnifying-glass-chart"></i> Analytical Thinking</span>
+              <span class="tag"><i class="fa-solid fa-comments"></i> Communication</span>
+              <span class="tag"><i class="fa-solid fa-heart"></i> Empathy & Patience</span>
+              <span class="tag"><i class="fa-solid fa-crosshairs"></i> Attention to Detail</span>
+            </div>
+          </div>
+
+          <!-- Education Timeline Card -->
+          <div class="education-card glass-panel">
+            <h3 class="card-heading"><i class="fa-solid fa-graduation-cap"></i> Academic Odyssey</h3>
+
+            <div class="timeline">
+              <!-- Item 1: Degree -->
+              <div class="timeline-item active-item">
+                <div class="timeline-marker">
+                  <i class="fa-solid fa-user-graduate"></i>
+                </div>
+                <div class="timeline-content">
+                  <div class="timeline-header">
+                    <span class="timeline-degree">BCA (Data Science)</span>
+                    <span class="timeline-badge cgpa-badge">CGPA: 8.2</span>
+                  </div>
+                  <h4 class="timeline-school">Presidency University, Bangalore</h4>
+                  <div class="timeline-meta">
+                    <span><i class="fa-regular fa-calendar"></i> Graduating 2026</span>
+                    <span><i class="fa-solid fa-location-arrow"></i> Bangalore</span>
+                  </div>
+                  <p class="timeline-desc">
+                    Comprehensive study of Data Structures, Statistical Methods, Machine Learning Algorithms, Database Management Systems (RDBMS), 
+                    Artificial Intelligence, and Applied Computer Vision.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Item 2: Class XII -->
+              <div class="timeline-item">
+                <div class="timeline-marker">
+                  <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <div class="timeline-content">
+                  <div class="timeline-header">
+                    <span class="timeline-degree">Class XII (Pre-University)</span>
+                    <span class="timeline-badge">80.0%</span>
+                  </div>
+                  <h4 class="timeline-school">BGS PU College</h4>
+                  <div class="timeline-meta">
+                    <span><i class="fa-regular fa-calendar"></i> Completed 2023</span>
+                  </div>
+                  <p class="timeline-desc">
+                    Higher secondary education building rigorous core analytical, mathematical, and logical problem-solving principles.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Item 3: Class X -->
+              <div class="timeline-item">
+                <div class="timeline-marker">
+                  <i class="fa-solid fa-school"></i>
+                </div>
+                <div class="timeline-content">
+                  <div class="timeline-header">
+                    <span class="timeline-degree">Class X (Secondary School)</span>
+                    <span class="timeline-badge distinction-badge">94.6% Distinction</span>
+                  </div>
+                  <h4 class="timeline-school">Sri Vivekananda English Medium High School</h4>
+                  <div class="timeline-meta">
+                    <span><i class="fa-regular fa-calendar"></i> Completed 2021</span>
+                  </div>
+                  <p class="timeline-desc">
+                    Graduated with outstanding academic distinction, excelling in Mathematics, Science, and Information Technology.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D SKILLS UNIVERSE SECTION -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-subtitle"><i class="fa-solid fa-vr-cardboard"></i> Interactive 3D Technology Stack</div>
+          <h2 class="section-title">All Skills in <span class="gradient-text">3D Space</span></h2>
+          <p class="section-desc">
+            Interact with the dynamic 3D orbital constellation or tilt the 3D holographic skill cubes to inspect proficiency, toolkits, and live code examples.
+          </p>
+        </div>
+
+        <!-- 3D Skill Sphere Interactive Visualizer -->
+        <div class="skill-3d-visualizer glass-panel">
+          <div class="visualizer-header">
+            <div class="visualizer-status">
+              <span class="pulse-indicator"></span>
+              <span><strong>3D Interactive Orbit Matrix:</strong> Click any orbiting node or drag to rotate universe</span>
+            </div>
+            <div class="visualizer-controls">
+              <button class="btn-micro" id="speedUpOrbitBtn"><i class="fa-solid fa-gauge-high"></i> Speed</button>
+              <button class="btn-micro" id="explodeSkillsBtn"><i class="fa-solid fa-network-wired"></i> Expand Grid</button>
+              <button class="btn-micro" id="recenterOrbitBtn"><i class="fa-solid fa-crosshairs"></i> Recenter</button>
+            </div>
+          </div>
+
+          <div id="skills3dCanvasContainer" class="skills-canvas-container">
+            <!-- Three.js 3D Skill Galaxy Canvas rendered here -->
+          </div>
+
+          <!-- Active Selected 3D Skill Info Bar -->
+          <div class="active-skill-bar" id="activeSkillBar">
+            <div class="skill-info-left">
+              <span class="skill-icon-bubble" id="activeSkillIcon"><i class="fa-brands fa-python"></i></span>
+              <div>
+                <h4 id="activeSkillName">Python</h4>
+                <p id="activeSkillCategory">Programming & Machine Learning Core</p>
+              </div>
+            </div>
+            <div class="skill-info-middle">
+              <div class="level-header">
+                <span>Proficiency Level</span>
+                <strong id="activeSkillPercent">92%</strong>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" id="activeSkillFill" style="width: 92%;"></div>
+              </div>
+            </div>
+            <div class="skill-info-right">
+              <span class="toolkit-badge" id="activeSkillToolkit">NumPy, Pandas, Scikit-learn, OpenCV</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill Filters -->
+        <div class="skill-filter-tabs">
+          <button class="filter-tab active" data-filter="all">All Skills (3D)</button>
+          <button class="filter-tab" data-filter="ml-data">Machine Learning & Data</button>
+          <button class="filter-tab" data-filter="programming">Languages & DB</button>
+          <button class="filter-tab" data-filter="tools">AI Tools & Productivity</button>
+        </div>
+
+        <!-- 3D Holographic Tilt Cards Grid -->
+        <div class="skills-3d-grid" id="skills3dGrid">
+          <!-- Python -->
+          <div class="skill-3d-card glass-panel" data-category="programming ml-data" data-skill="python">
+            <div class="card-3d-inner">
+              <div class="skill-glow" style="background: radial-gradient(circle, rgba(0, 245, 212, 0.25) 0%, transparent 70%);"></div>
+              <div class="skill-card-top">
+                <div class="skill-badge-icon python-color"><i class="fa-brands fa-python"></i></div>
+                <span class="proficiency-tag">92% Mastery</span>
+              </div>
+              <h3 class="skill-title">Python</h3>
+              <p class="skill-subtitle">Data Science & AI Engine</p>
+              <p class="skill-detail">
+                Core development language for machine learning pipelines, OpenCV vision processing, pandas data manipulation, and Flask REST APIs.
+              </p>
+              <div class="skill-tags">
+                <span>NumPy</span>
+                <span>Pandas</span>
+                <span>Scikit-learn</span>
+                <span>OpenCV</span>
+              </div>
+              <div class="card-interactive-action">
+                <button class="btn-inspect" onclick="openSkillModal('python')">
+                  <i class="fa-solid fa-code"></i> Live Code Sandbox
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Machine Learning -->
+          <div class="skill-3d-card glass-panel" data-category="ml-data" data-skill="ml">
+            <div class="card-3d-inner">
+              <div class="skill-glow" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, transparent 70%);"></div>
+              <div class="skill-card-top">
+                <div class="skill-badge-icon ml-color"><i class="fa-solid fa-brain"></i></div>
+                <span class="proficiency-tag">90% Mastery</span>
+              </div>
+              <h3 class="skill-title">Machine Learning</h3>
+              <p class="skill-subtitle">Supervised & Unsupervised Models</p>
+              <p class="skill-detail">
+                Predictive classification, regression models, feature selection, cross-validation, hyperparameter tuning, and model evaluation metrics (ROC, F1).
+              </p>
+              <div class="skill-tags">
+                <span>Random Forest</span>
+                <span>Decision Trees</span>
+                <span>Logistic Reg</span>
+                <span>SVM</span>
+              </div>
+              <div class="card-interactive-action">
+                <button class="btn-inspect" onclick="openSkillModal('ml')">
+                  <i class="fa-solid fa-chart-line"></i> View Model Pipeline
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Analysis -->
+          <div class="skill-3d-card glass-panel" data-category="ml-data" data-skill="data-analysis">
+            <div class="card-3d-inner">
+              <div class="skill-glow" style="background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);"></div>
+              <div class="skill-card-top">
+                <div class="skill-badge-icon data-color"><i class="fa-solid fa-chart-pie"></i></div>
+                <span class="proficiency-tag">88% Mastery</span>
+              </div>
+              <h3 class="skill-title">Data Analysis</h3>
+              <p class="skill-subtitle">Exploratory Insights & Biometrics</p>
+              <p class="skill-detail">
+                Data wrangling, cleaning missing values, outlier detection, hypothesis testing, correlation heatmaps, and executive dashboard reporting.
+              </p>
+              <div class="skill-tags">
+                <span>EDA</span>
+                <span>Feature Eng</span>
+                <span>Matplotlib</span>
+                <span>Seaborn</span>
+              </div>
+              <div class="card-interactive-action">
+                <button class="btn-inspect" onclick="openSkillModal('data-analysis')">
+                  <i class="fa-solid fa-magnifying-glass-chart"></i> View Analytics Demo
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- MySQL -->
+          <div class="skill-3d-card glass-panel" data-category="programming ml-data" data-skill="mysql">
+            <div class="card-3d-inner">
+              <div class="skill-glow" style="background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, transparent 70%);"></div>
+              <div class="skill-card-top">
+                <div class="skill-badge-icon mysql-color"><i class="fa-solid fa-database"></i></div>
+                <span class="proficiency-tag">86% Mastery</span>
+              </div>
+              <h3 class="skill-title">MySQL</h3>
+              <p class="skill-subtitle">Relational Database Management</p>
+              <p class="skill-detail">
+                Certified in RDBMS. Proficient in complex joins, aggregations, subqueries, schema indexing, transactions, and storing predictive system outputs.
+              </p>
+              <div class="skill-tags">
+                <span>RDBMS</span>
+                <span>Complex Joins</span>
+                <span>Stored Procs</span>
+                <span>Schema Design</span>
+              </div>
+              <div class="card-interactive-action">
+                <button class="btn-inspect" onclick="openSkillModal('mysql')">
+                  <i class="fa-solid fa-terminal"></i> Live SQL Simulator
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Microsoft Excel -->
+          <div class="skill-3d-card glass-panel" data-category="tools ml-data" data-skill="excel">
+            <div class="card-3d-inner">
+              <div class="skill-glow" style="background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, transparent 70%);"></div>
+              <div class="skill-card-top">
+                <div class="skill-badge-icon excel-color"><i class="fa-solid fa-file-excel"></i></div>
+                <span class="proficiency-tag">92% Diploma</span>
+              </div>
+              <h3 class="skill-title">Microsoft Excel</h3>
+              <p class="skill-subtitle">Advanced Analytics & Modeling</p>
+              <p class="skill-detail">
+                Diploma holder from Uniathena. Expert in Pivot Tables, VLOOKUP/XLOOKUP, conditional modeling, dynamic charting, and statistical summaries.
+              </p>
+              <div class="skill-tags">
+                <span>Pivot Tables</span>
+                <span>XLOOKUP</span>
+                <span>What-If Analysis</span>
+                <span>Dashboards</span>
+              </div>
+              <div class="card-interactive-action">
+                <button class="btn-inspect" onclick="openSkillModal('excel')">
+                  <i class="fa-solid fa-table-cells"></i> Interactive Sheet Demo
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- C Programming -->
+          <div class="skill-3d-card glass-panel" data-category="programming" data-skill="c">
+            <div class="card-3d-inner">
+              <div class="skill-glow" style="background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);"></div>
+              <div class="skill-card-top">
+                <div class="skill-badge-icon c-color"><i class="fa-solid fa-code"></i></div>
+                <span class="proficiency-tag">82% Mastery</span>
+              </div>
+              <h3 class="skill-title">C Language</h3>
+              <p class="skill-subtitle">Foundations & Memory Architecture</p>
+              <p class="skill-detail">
+                Strong understanding of pointers, memory allocation, low-level data structures (linked lists, stacks, queues), and algorithmic computational complexity.
+              </p>
+              <div class="skill-tags">
+                <span>Pointers</span>
+                <span>Data Structures</span>
+                <span>Memory Mgmt</span>
+                <span>Algorithms</span>
+              </div>
+              <div class="card-interactive-action">
+                <button class="btn-inspect" onclick="openSkillModal('c')">
+                  <i class="fa-solid fa-microchip"></i> Architecture Demo
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- HTML (Basic) -->
+          <div class="skill-3d-card glass-panel" data-category="programming" data-skill="html">
+            <div class="card-3d-inner">
+              <div class="skill-glow" style="background: radial-gradient(circle, rgba(239, 68, 68, 0.25) 0%, transparent 70%);"></div>
+              <div class="skill-card-top">
+                <div class="skill-badge-icon html-color"><i class="fa-brands fa-html5"></i></div>
+                <span class="proficiency-tag">80% Competent</span>
+              </div>
+              <h3 class="skill-title">HTML (Basic)</h3>
+              <p class="skill-subtitle">Web Structuring & Frontend UI</p>
+              <p class="skill-detail">
+                Structuring clean, accessible web interfaces for ML web applications, Flask templates, data visualization layouts, and responsive dashboards.
+              </p>
+              <div class="skill-tags">
+                <span>HTML5</span>
+                <span>Forms & Validation</span>
+                <span>Web Components</span>
+                <span>Templates</span>
+              </div>
+              <div class="card-interactive-action">
+                <button class="btn-inspect" onclick="openSkillModal('html')">
+                  <i class="fa-solid fa-laptop-code"></i> View UI Layout
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Tools -->
+          <div class="skill-3d-card glass-panel" data-category="tools" data-skill="ai-tools">
+            <div class="card-3d-inner">
+              <div class="skill-glow" style="background: radial-gradient(circle, rgba(236, 72, 153, 0.25) 0%, transparent 70%);"></div>
+              <div class="skill-card-top">
+                <div class="skill-badge-icon ai-color"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <span class="proficiency-tag">95% Mastery</span>
+              </div>
+              <h3 class="skill-title">Modern AI Tools</h3>
+              <p class="skill-subtitle">LLMs & Generative Intelligence</p>
+              <p class="skill-detail">
+                Leveraging state-of-the-art AI assistants for accelerated coding, prompt engineering, automated data transformation, and research synthesis.
+              </p>
+              <div class="skill-tags">
+                <span>ChatGPT</span>
+                <span>Claude AI</span>
+                <span>Google Gemini</span>
+                <span>MS Copilot</span>
+              </div>
+              <div class="card-interactive-action">
+                <button class="btn-inspect" onclick="openSkillModal('ai-tools')">
+                  <i class="fa-solid fa-sparkles"></i> AI Workflow Sandbox
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- MS Office -->
+          <div class="skill-3d-card glass-panel" data-category="tools" data-skill="ms-office">
+            <div class="card-3d-inner">
+              <div class="skill-glow" style="background: radial-gradient(circle, rgba(14, 165, 233, 0.25) 0%, transparent 70%);"></div>
+              <div class="skill-card-top">
+                <div class="skill-badge-icon office-color"><i class="fa-solid fa-briefcase"></i></div>
+                <span class="proficiency-tag">90% Mastery</span>
+              </div>
+              <h3 class="skill-title">MS Office Suite</h3>
+              <p class="skill-subtitle">Executive Communication & Docs</p>
+              <p class="skill-detail">
+                Documenting clinical ML findings, preparing research presentations in PowerPoint, professional technical reporting in Word, and cross-team collaboration.
+              </p>
+              <div class="skill-tags">
+                <span>PowerPoint</span>
+                <span>Word</span>
+                <span>Documentation</span>
+                <span>Presentations</span>
+              </div>
+              <div class="card-interactive-action">
+                <button class="btn-inspect" onclick="openSkillModal('ms-office')">
+                  <i class="fa-solid fa-file-lines"></i> View Reports
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE PROJECTS SECTION (ALL PROJECTS LIVE!) -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-subtitle"><i class="fa-solid fa-rocket"></i> Tested & Scalable AI Applications</div>
+          <h2 class="section-title">All Projects <span class="gradient-text">Live In-Browser</span></h2>
+          <p class="section-desc">
+            Experience both of Varshini's flagship innovations in real-time right here! Test computer vision gesture tracking or run clinical multi-disease risk predictions.
+          </p>
+        </div>
+
+        <!-- Project Switcher Tabs -->
+        <div class="project-switcher-nav">
+          <button class="project-tab-btn active" id="tabBtnProject1">
+            <i class="fa-solid fa-face-smile"></i>
+            <span>Project 1: Face Gesture Virtual Mouse</span>
+            <span class="pill-live">LIVE CV</span>
+          </button>
+          <button class="project-tab-btn" id="tabBtnProject2">
+            <i class="fa-solid fa-heart-pulse"></i>
+            <span>Project 2: AI Multi-Disease Prediction</span>
+            <span class="pill-live">LIVE ML</span>
+          </button>
+        </div>
+
+        <!-- PROJECT 1: FACE GESTURE-BASED VIRTUAL MOUSE (LIVE INTERACTIVE) -->
+        <div class="project-detail-panel glass-panel" id="projectPanel1">
+          <div class="project-top-banner">
+            <div>
+              <div class="project-meta-pill">Computer Vision • OpenCV • Machine Learning • Python • MySQL</div>
+              <h3 class="project-heading">Face Gesture-Based Virtual Mouse Using Machine Learning</h3>
+            </div>
+            <div class="project-status-box">
+              <span class="pulse-indicator"></span>
+              <span>Ready for Interaction</span>
+            </div>
+          </div>
+
+          <p class="project-narrative">
+            An assistive AI-driven system engineered to provide complete hands-free computer control for enhanced accessibility.
+            Uses facial landmark tracking to map head orientation to dynamic cursor coordinates, and detects eye blinks and facial gestures to execute left clicks, right clicks, and smooth scrolling without any physical hardware mouse.
+          </p>
+
+          <!-- Interactive Live Virtual Mouse Sandbox -->
+          <div class="live-sandbox-container">
+            <div class="sandbox-toolbar">
+              <div class="sandbox-mode-toggles">
+                <button class="btn-mode active" id="simModeBtn">
+                  <i class="fa-solid fa-gamepad"></i> Interactive Simulator Mode
+                </button>
+                <button class="btn-mode" id="webcamModeBtn">
+                  <i class="fa-solid fa-video"></i> Real Webcam AI Tracking
+                </button>
+              </div>
+              <div class="sandbox-stats-readout">
+                <span>FPS: <strong id="vMouseFps">60</strong></span>
+                <span>Latency: <strong id="vMouseLatency">12ms</strong></span>
+                <span>Confidence: <strong id="vMouseConf">98.4%</strong></span>
+              </div>
+            </div>
+
+            <!-- Virtual Mouse Workspace Grid -->
+            <div class="vmouse-workspace">
+              <!-- Left Column: Vision Feed / Simulator Controls -->
+              <div class="vmouse-controls-col">
+                <!-- Webcam / Vision Video Canvas -->
+                <div class="cv-camera-feed glass-panel">
+                  <div class="cv-feed-header">
+                    <span><i class="fa-solid fa-camera"></i> OpenCV Landmark Vision Feed</span>
+                    <span class="badge-tech">468 Keypoints</span>
+                  </div>
+
+                  <div class="cv-video-frame" id="cvVideoFrame">
+                    <video id="webcamVideo" autoplay playsinline muted style="display: none;"></video>
+                    <canvas id="cvCanvasOverlay" width="380" height="240"></canvas>
+                    
+                    <!-- Simulated Face Avatar (Visible in Simulator Mode) -->
+                    <div class="sim-avatar-box" id="simAvatarBox">
+                      <div class="sim-face-model" id="simFaceModel">
+                        <div class="sim-eye left-eye" id="simLeftEye"></div>
+                        <div class="sim-eye right-eye" id="simRightEye"></div>
+                        <div class="sim-nose" id="simNose"></div>
+                        <div class="sim-mouth" id="simMouth"></div>
+                        <div class="landmark-mesh-lines"></div>
+                      </div>
+                      <div class="sim-direction-indicator" id="simDirectionText">Centered (Neutral)</div>
+                    </div>
+                  </div>
+
+                  <div class="cv-feed-actions">
+                    <button class="btn-feed-action" id="toggleWebcamBtn">
+                      <i class="fa-solid fa-power-off"></i> Start Webcam Feed
+                    </button>
+                    <button class="btn-feed-action btn-feed-secondary" id="calibrateNeutralBtn">
+                      <i class="fa-solid fa-crosshairs"></i> Calibrate Center
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Gestures Cheat Sheet / Simulator Triggers -->
+                <div class="gestures-palette glass-panel">
+                  <h4><i class="fa-solid fa-hand-pointer"></i> Gesture Recognition Triggers</h4>
+                  <div class="gesture-triggers-grid">
+                    <button class="gesture-action-btn" id="triggerLeftClickBtn" title="Simulates Left Eye Blink">
+                      <i class="fa-solid fa-eye-slash"></i>
+                      <span>Left Wink</span>
+                      <small>Left Click</small>
+                    </button>
+                    <button class="gesture-action-btn" id="triggerRightClickBtn" title="Simulates Right Eye Blink">
+                      <i class="fa-solid fa-eye"></i>
+                      <span>Right Wink</span>
+                      <small>Right Click</small>
+                    </button>
+                    <button class="gesture-action-btn" id="triggerScrollUpBtn" title="Simulates Eyebrows Raised">
+                      <i class="fa-solid fa-arrow-up"></i>
+                      <span>Raise Brows</span>
+                      <small>Scroll Up</small>
+                    </button>
+                    <button class="gesture-action-btn" id="triggerScrollDownBtn" title="Simulates Mouth Open">
+                      <i class="fa-solid fa-arrow-down"></i>
+                      <span>Open Mouth</span>
+                      <small>Scroll Down</small>
+                    </button>
+                  </div>
+
+                  <!-- Sensitivity Controls -->
+                  <div class="sensitivity-slider-box">
+                    <div class="slider-row">
+                      <label for="mouseSensRange">Motion Sensitivity</label>
+                      <span id="mouseSensVal">1.8x</span>
+                    </div>
+                    <input type="range" id="mouseSensRange" min="1" max="4" step="0.2" value="1.8">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Interactive Test Target Area (Where the virtual cursor moves & clicks!) -->
+              <div class="vmouse-target-col glass-panel" id="vmouseTargetCol">
+                <div class="target-field-header">
+                  <div>
+                    <h4><i class="fa-solid fa-bullseye"></i> Virtual Desktop Screen</h4>
+                    <p>Move your head / joystick to steer the glowing virtual cursor. Wink to pop bubbles!</p>
+                  </div>
+                  <div class="target-score-badge">
+                    <span>Score: <strong id="bubbleScore">0</strong></span>
+                  </div>
+                </div>
+
+                <div class="interactive-screen-sandbox" id="screenSandbox">
+                  <!-- The Virtual Cursor Driven by Facial Landmarks -->
+                  <div class="virtual-ai-cursor" id="virtualAiCursor">
+                    <div class="cursor-pointer"></div>
+                    <div class="cursor-hud">
+                      <span id="cursorPosReadout">X: 190 Y: 120</span>
+                    </div>
+                  </div>
+
+                  <!-- Interactive Clickable Targets/Bubbles -->
+                  <div class="bubble-layer" id="bubbleLayer">
+                    <!-- Populated dynamically -->
+                  </div>
+
+                  <div class="sandbox-instructions-overlay" id="sandboxInstructions">
+                    <div class="instruction-bubble">
+                      <i class="fa-solid fa-mouse-pointer"></i>
+                      <p><strong>Move mouse or drag inside here</strong> to simulate head steering, or activate webcam above!</p>
+                      <button class="btn btn-primary btn-sm" id="dismissInstrBtn">Got it, Let's Play!</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Live System Log Stream -->
+                <div class="live-action-log" id="vMouseActionLog">
+                  <span class="log-entry timestamp-init">[00:00:00] Gesture recognition system initialized. MySQL session logger ready.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technical Architecture Accordion -->
+          <div class="project-tech-highlights">
+            <div class="tech-highlight-item">
+              <i class="fa-solid fa-microchip"></i>
+              <div>
+                <h5>Real-Time Vision Pipeline</h5>
+                <p>MediaPipe & OpenCV landmark extraction at 60 FPS with minimal CPU load and smooth exponential moving average (EMA) jitter filtering.</p>
+              </div>
+            </div>
+            <div class="tech-highlight-item">
+              <i class="fa-solid fa-universal-access"></i>
+              <div>
+                <h5>Accessibility & Inclusivity</h5>
+                <p>Empowers individuals with motor impairments or RSI to operate web browsers, desktop utilities, and software completely hands-free.</p>
+              </div>
+            </div>
+            <div class="tech-highlight-item">
+              <i class="fa-solid fa-database"></i>
+              <div>
+                <h5>MySQL Session & Gesture Logging</h5>
+                <p>Stores user calibration profiles, gesture confidence histories, and telemetry logs for continuous adaptation and personalized tuning.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 2: AI MULTI-DISEASE PREDICTION SYSTEM (LIVE INTERACTIVE) -->
+        <div class="project-detail-panel glass-panel" id="projectPanel2" style="display: none;">
+          <div class="project-top-banner">
+            <div>
+              <div class="project-meta-pill">Machine Learning • Healthcare Analytics • Flask • Python • MySQL</div>
+              <h3 class="project-heading">AI-Powered Multi-Disease Prediction System</h3>
+            </div>
+            <div class="project-status-box">
+              <span class="pulse-indicator"></span>
+              <span>Predictive ML Active</span>
+            </div>
+          </div>
+
+          <p class="project-narrative">
+            A comprehensive clinical diagnostic intelligence system trained on extensive medical datasets. Evaluates patient biomarkers 
+            across multiple pathologies (Diabetes, Cardiovascular Disease, and Kidney Biomarkers) with instant calibrated probability scoring, 
+            SHAP-style risk contribution factors, and downloadable clinical diagnostic summaries.
+          </p>
+
+          <!-- Interactive Clinical Machine Learning Studio -->
+          <div class="disease-ml-studio">
+            <!-- Disease Selector Bar -->
+            <div class="disease-selector-pills">
+              <button class="disease-pill active" data-disease="diabetes">
+                <i class="fa-solid fa-droplet"></i> Diabetes Mellitus Risk
+              </button>
+              <button class="disease-pill" data-disease="heart">
+                <i class="fa-solid fa-heart-pulse"></i> Cardiovascular Disease Risk
+              </button>
+              <button class="disease-pill" data-disease="kidney">
+                <i class="fa-solid fa-lungs"></i> Chronic Kidney Health
+              </button>
+            </div>
+
+            <!-- Preset Quick Load -->
+            <div class="presets-bar">
+              <span class="presets-label"><i class="fa-solid fa-bolt"></i> Instant Clinical Presets:</span>
+              <button class="preset-chip" id="presetHealthyBtn"><i class="fa-solid fa-check"></i> Healthy Benchmark</button>
+              <button class="preset-chip" id="presetBorderlineBtn"><i class="fa-solid fa-triangle-exclamation"></i> Borderline / Early Warning</button>
+              <button class="preset-chip" id="presetHighRiskBtn"><i class="fa-solid fa-circle-exclamation"></i> Elevated Risk Profile</button>
+              <button class="preset-chip" id="presetRandomizeBtn"><i class="fa-solid fa-shuffle"></i> Random Patient</button>
+            </div>
+
+            <!-- Two-Column Clinical Interface -->
+            <div class="clinical-grid">
+              <!-- Left Column: Patient Biomarker Input Form -->
+              <div class="biomarkers-form-card glass-panel">
+                <div class="card-mini-header">
+                  <h4><i class="fa-solid fa-sliders"></i> Patient Clinical Biomarkers</h4>
+                  <span class="badge-model" id="activeModelBadge">Random Forest Ensemble (96.2% Acc)</span>
+                </div>
+
+                <form id="diseasePredictForm" onsubmit="event.preventDefault(); runDiseasePrediction();">
+                  <!-- Diabetes Form Inputs -->
+                  <div class="inputs-group active-group" id="groupDiabetes">
+                    <div class="input-field">
+                      <div class="field-label-row">
+                        <label for="glucoseInput">Plasma Glucose Level (mg/dL)</label>
+                        <span class="val-display" id="glucoseVal">120</span>
+                      </div>
+                      <input type="range" id="glucoseInput" min="70" max="220" value="120" oninput="updatePredictiveScore()">
+                      <div class="range-marks"><span>70 (Normal)</span><span>140 (Pre-diabetic)</span><span>200+ (Critical)</span></div>
+                    </div>
+
+                    <div class="input-field">
+                      <div class="field-label-row">
+                        <label for="bmiInput">Body Mass Index - BMI (kg/m²)</label>
+                        <span class="val-display" id="bmiVal">24.5</span>
+                      </div>
+                      <input type="range" id="bmiInput" min="15.0" max="45.0" step="0.1" value="24.5" oninput="updatePredictiveScore()">
+                      <div class="range-marks"><span>18.5 (Under)</span><span>24.9 (Normal)</span><span>30+ (Obese)</span></div>
+                    </div>
+
+                    <div class="input-field">
+                      <div class="field-label-row">
+                        <label for="bpInput">Blood Pressure Diastolic (mm Hg)</label>
+                        <span class="val-display" id="bpVal">78</span>
+                      </div>
+                      <input type="range" id="bpInput" min="50" max="130" value="78" oninput="updatePredictiveScore()">
+                      <div class="range-marks"><span>60 (Low)</span><span>80 (Normal)</span><span>90+ (Hypertension)</span></div>
+                    </div>
+
+                    <div class="grid-2-col">
+                      <div class="input-field">
+                        <label for="ageInput">Patient Age (Years)</label>
+                        <input type="number" id="ageInput" min="18" max="95" value="28" oninput="updatePredictiveScore()">
+                      </div>
+                      <div class="input-field">
+                        <label for="insulinInput">Serum Insulin (μU/ml)</label>
+                        <input type="number" id="insulinInput" min="15" max="350" value="85" oninput="updatePredictiveScore()">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Heart Disease Inputs (Hidden by default, shown when Heart pill active) -->
+                  <div class="inputs-group" id="groupHeart" style="display: none;">
+                    <div class="input-field">
+                      <div class="field-label-row">
+                        <label for="cholesterolInput">Serum Cholesterol (mg/dL)</label>
+                        <span class="val-display" id="cholVal">195</span>
+                      </div>
+                      <input type="range" id="cholesterolInput" min="120" max="380" value="195" oninput="updatePredictiveScore()">
+                      <div class="range-marks"><span>&lt; 200 (Desirable)</span><span>239 (Borderline)</span><span>&gt; 240 (High)</span></div>
+                    </div>
+
+                    <div class="input-field">
+                      <div class="field-label-row">
+                        <label for="maxHeartRateInput">Max Heart Rate Achieved (bpm)</label>
+                        <span class="val-display" id="hrVal">155</span>
+                      </div>
+                      <input type="range" id="maxHeartRateInput" min="70" max="210" value="155" oninput="updatePredictiveScore()">
+                    </div>
+
+                    <div class="grid-2-col">
+                      <div class="input-field">
+                        <label for="chestPainSelect">Chest Pain Type</label>
+                        <select id="chestPainSelect" onchange="updatePredictiveScore()">
+                          <option value="0">Typical Angina (Level 1)</option>
+                          <option value="1">Atypical Angina (Level 2)</option>
+                          <option value="2">Non-anginal Pain (Level 3)</option>
+                          <option value="3" selected>Asymptomatic (Level 4)</option>
+                        </select>
+                      </div>
+                      <div class="input-field">
+                        <label for="stDepressInput">ST Depression (Exercise)</label>
+                        <input type="number" id="stDepressInput" min="0.0" max="6.0" step="0.2" value="0.8" oninput="updatePredictiveScore()">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Kidney Disease Inputs -->
+                  <div class="inputs-group" id="groupKidney" style="display: none;">
+                    <div class="input-field">
+                      <div class="field-label-row">
+                        <label for="creatinineInput">Serum Creatinine (mg/dL)</label>
+                        <span class="val-display" id="creatVal">0.9</span>
+                      </div>
+                      <input type="range" id="creatinineInput" min="0.4" max="5.0" step="0.1" value="0.9" oninput="updatePredictiveScore()">
+                      <div class="range-marks"><span>0.6 - 1.2 (Normal)</span><span>&gt; 1.5 (Impaired)</span></div>
+                    </div>
+
+                    <div class="input-field">
+                      <div class="field-label-row">
+                        <label for="hemoglobinInput">Hemoglobin Level (g/dL)</label>
+                        <span class="val-display" id="hemoVal">14.2</span>
+                      </div>
+                      <input type="range" id="hemoglobinInput" min="6" max="18" step="0.1" value="14.2" oninput="updatePredictiveScore()">
+                      <div class="range-marks"><span>&lt; 10 (Anemic)</span><span>13.5 - 17.5 (Normal)</span></div>
+                    </div>
+
+                    <div class="grid-2-col">
+                      <div class="input-field">
+                        <label for="bloodUreaInput">Blood Urea (mg/dL)</label>
+                        <input type="number" id="bloodUreaInput" min="10" max="160" value="28" oninput="updatePredictiveScore()">
+                      </div>
+                      <div class="input-field">
+                        <label for="hypertensionSelect">Hypertension Status</label>
+                        <select id="hypertensionSelect" onchange="updatePredictiveScore()">
+                          <option value="no" selected>No Hypertension</option>
+                          <option value="yes">Diagnosed Hypertension</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-action-row">
+                    <button type="button" class="btn btn-primary" onclick="runDiseasePrediction()">
+                      <i class="fa-solid fa-wand-magic-sparkles"></i> Recalculate ML Risk
+                    </button>
+                    <button type="button" class="btn btn-outline" id="printReportBtn" onclick="generateClinicalReport()">
+                      <i class="fa-solid fa-print"></i> Generate Diagnostic PDF
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Right Column: Live ML Diagnostic Dashboard & Risk Gauge -->
+              <div class="diagnostic-result-card glass-panel">
+                <div class="card-mini-header">
+                  <h4><i class="fa-solid fa-chart-pie"></i> Real-Time Diagnostic Evaluation</h4>
+                  <span class="session-id">ID: <strong id="patientSessionId">PAT-9842</strong></span>
+                </div>
+
+                <!-- Risk Gauge Meter -->
+                <div class="risk-gauge-box">
+                  <div class="gauge-dial">
+                    <svg viewBox="0 0 200 110" class="gauge-svg">
+                      <path d="M 20 100 A 80 80 0 0 1 180 100" class="gauge-bg" fill="none" stroke-width="16" />
+                      <path d="M 20 100 A 80 80 0 0 1 180 100" id="gaugeFill" class="gauge-fill" fill="none" stroke-width="16" stroke-dasharray="251" stroke-dashoffset="200" />
+                    </svg>
+                    <div class="gauge-needle" id="gaugeNeedle"></div>
+                    <div class="gauge-center-text">
+                      <span class="gauge-percent" id="riskPercent">14%</span>
+                      <span class="gauge-label" id="riskLabel">Low Risk</span>
+                    </div>
+                  </div>
+
+                  <div class="risk-verdict-banner low-risk" id="riskVerdictBanner">
+                    <i class="fa-solid fa-circle-check" id="verdictIcon"></i>
+                    <div>
+                      <h5 id="verdictTitle">Low Probability of Pathology</h5>
+                      <p id="verdictSub">Biomarkers fall comfortably within safe baseline reference ranges.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Feature Importance Factors (SHAP Inspired) -->
+                <div class="feature-importance-box">
+                  <h5><i class="fa-solid fa-chart-simple"></i> Primary Contributing Biomarkers</h5>
+                  <div class="feature-bar-list" id="featureBarList">
+                    <!-- Populated dynamically via JS -->
+                  </div>
+                </div>
+
+                <!-- Physician Recommendation Insights -->
+                <div class="clinical-recommendations glass-panel" id="clinicalAdviceBox">
+                  <h5><i class="fa-solid fa-stethoscope"></i> AI Clinical Insights:</h5>
+                  <ul id="recommendationsList">
+                    <li>Maintain balanced nutrition and regular cardiovascular exercise.</li>
+                    <li>Repeat routine screening in 12 months for proactive tracking.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technical Architecture Accordion -->
+          <div class="project-tech-highlights">
+            <div class="tech-highlight-item">
+              <i class="fa-solid fa-flask"></i>
+              <div>
+                <h5>Flask Microservice Architecture</h5>
+                <p>Modular REST endpoints serving real-time predictions, serialized scikit-learn models (.pkl), and json clinical payloads.</p>
+              </div>
+            </div>
+            <div class="tech-highlight-item">
+              <i class="fa-solid fa-database"></i>
+              <div>
+                <h5>Relational Patient Database</h5>
+                <p>Structured MySQL schemas storing anonymized longitudinal patient assessments, biomarker records, and physician audit trails.</p>
+              </div>
+            </div>
+            <div class="tech-highlight-item">
+              <i class="fa-solid fa-chart-column"></i>
+              <div>
+                <h5>Rigorous Preprocessing & Validation</h5>
+                <p>KNN imputation for missing values, RobustScaler normalization, SMOTE synthetic oversampling, and 10-fold cross-validation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS & CREDENTIALS SECTION -->
+    <section class="section certs-section" id="certifications">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-subtitle"><i class="fa-solid fa-certificate"></i> Verified Industry Knowledge</div>
+          <h2 class="section-title">Professional <span class="gradient-text">Certifications</span></h2>
+          <p class="section-desc">
+            Rigorous credentialing from leading industry educators validating data science, deep learning, databases, and advanced analytics.
+          </p>
+        </div>
+
+        <div class="certs-grid">
+          <!-- Cert 1: Scaler -->
+          <div class="cert-card glass-panel" onclick="viewCertDetails('scaler')">
+            <div class="cert-icon scaler-bg">
+              <i class="fa-solid fa-database"></i>
+            </div>
+            <div class="cert-body">
+              <span class="cert-issuer">Scaler Academy</span>
+              <h3 class="cert-name">RDBMS Certification</h3>
+              <p class="cert-desc">
+                Relational Database Management Systems, schema normalization (3NF/BCNF), advanced query optimization, transactions (ACID), and indexing.
+              </p>
+              <div class="cert-tags">
+                <span>SQL</span>
+                <span>Relational Schema</span>
+                <span>Database Indexing</span>
+              </div>
+            </div>
+            <div class="cert-footer">
+              <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Credential</span>
+              <button class="cert-inspect-link">View Details &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Cert 2: Infosys Springboard -->
+          <div class="cert-card glass-panel" onclick="viewCertDetails('infosys')">
+            <div class="cert-icon infosys-bg">
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <div class="cert-body">
+              <span class="cert-issuer">Infosys Springboard</span>
+              <h3 class="cert-name">Deep Learning for Developers</h3>
+              <p class="cert-desc">
+                Neural networks architecture, forward & backpropagation, activation functions, convolutional layers (CNNs), and model training pipelines.
+              </p>
+              <div class="cert-tags">
+                <span>Deep Learning</span>
+                <span>Neural Networks</span>
+                <span>CNN</span>
+              </div>
+            </div>
+            <div class="cert-footer">
+              <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Credential</span>
+              <button class="cert-inspect-link">View Details &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Cert 3: Simplilearn -->
+          <div class="cert-card glass-panel" onclick="viewCertDetails('simplilearn')">
+            <div class="cert-icon simplilearn-bg">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <div class="cert-body">
+              <span class="cert-issuer">Simplilearn</span>
+              <h3 class="cert-name">Machine Learning Specialist</h3>
+              <p class="cert-desc">
+                Supervised and unsupervised learning, regression, classification, clustering, random forests, model tuning, and metrics evaluation.
+              </p>
+              <div class="cert-tags">
+                <span>Scikit-Learn</span>
+                <span>ML Algorithms</span>
+                <span>Model Tuning</span>
+              </div>
+            </div>
+            <div class="cert-footer">
+              <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Credential</span>
+              <button class="cert-inspect-link">View Details &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Cert 4: Uniathena -->
+          <div class="cert-card glass-panel" onclick="viewCertDetails('uniathena')">
+            <div class="cert-icon uniathena-bg">
+              <i class="fa-solid fa-file-excel"></i>
+            </div>
+            <div class="cert-body">
+              <span class="cert-issuer">UniAthena</span>
+              <h3 class="cert-name">Diploma in Microsoft Excel</h3>
+              <p class="cert-desc">
+                Advanced business formulas, complex lookup functions, nested logic, Pivot Tables, interactive dashboards, and executive data presentation.
+              </p>
+              <div class="cert-tags">
+                <span>Advanced Excel</span>
+                <span>Pivot Tables</span>
+                <span>Data Modeling</span>
+              </div>
+            </div>
+            <div class="cert-footer">
+              <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Credential</span>
+              <button class="cert-inspect-link">View Details &rarr;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEYOND CODE & HOBBIES SECTION -->
+    <section class="section hobbies-section" id="hobbies">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-subtitle"><i class="fa-solid fa-palette"></i> Passions & Well-Rounded Creativity</div>
+          <h2 class="section-title">Beyond <span class="gradient-text">The Algorithms</span></h2>
+          <p class="section-desc">
+            Data science is enriched by creative intuition, rhythm, and analytical strategy. Explore interactive widgets inspired by Varshini's personal hobbies.
+          </p>
+        </div>
+
+        <div class="hobbies-grid">
+          <!-- Hobby 1: Photo & Video Editing -->
+          <div class="hobby-card glass-panel">
+            <div class="hobby-card-header">
+              <div class="hobby-icon-wrap"><i class="fa-solid fa-film"></i></div>
+              <div>
+                <h3>Photo & Video Editing</h3>
+                <p>Visual Storytelling & Color Grading</p>
+              </div>
+            </div>
+            <p class="hobby-desc">
+              Keen eye for visual balance, cinematic color palettes, framing, and dynamic pacing in multimedia content.
+            </p>
+
+            <!-- Interactive Before/After Visual Filter Sandbox -->
+            <div class="filter-playground">
+              <div class="filter-canvas-box" id="filterCanvasBox">
+                <div class="mock-cinema-frame" id="cinemaFrame">
+                  <div class="cinema-content">
+                    <i class="fa-solid fa-mountain-sun cinema-icon"></i>
+                    <div class="cinema-overlay-text">Bangalore Skyline • 4K Frame</div>
+                  </div>
+                </div>
+              </div>
+              <div class="filter-buttons">
+                <button class="filter-btn active" onclick="applyVisualFilter('cyber')">Cyber Neon</button>
+                <button class="filter-btn" onclick="applyVisualFilter('vintage')">Warm Film</button>
+                <button class="filter-btn" onclick="applyVisualFilter('monochrome')">Noir Contrast</button>
+                <button class="filter-btn" onclick="applyVisualFilter('normal')">Raw Log</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hobby 2: Listening to Music -->
+          <div class="hobby-card glass-panel">
+            <div class="hobby-card-header">
+              <div class="hobby-icon-wrap"><i class="fa-solid fa-headphones"></i></div>
+              <div>
+                <h3>Listening to Music</h3>
+                <p>Harmonic Flow & Deep Focus</p>
+              </div>
+            </div>
+            <p class="hobby-desc">
+              A companion for intensive coding sprints and statistical analysis. Enhances cognitive concentration and creative thinking.
+            </p>
+
+            <!-- Interactive Audio Visualizer Simulator -->
+            <div class="music-visualizer-box glass-panel">
+              <div class="music-track-info">
+                <div class="track-artwork"><i class="fa-solid fa-music"></i></div>
+                <div>
+                  <div class="track-title" id="trackTitle">Neural Resonance (Lo-Fi Focus)</div>
+                  <div class="track-artist">Varshini's Data Science Flow</div>
+                </div>
+                <button class="play-pause-btn" id="musicPlayBtn" onclick="toggleMusicDemo()">
+                  <i class="fa-solid fa-play" id="musicPlayIcon"></i>
+                </button>
+              </div>
+
+              <!-- Animated Wave Bars -->
+              <div class="wave-bars-container" id="waveBarsContainer">
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hobby 3: Watching Cricket -->
+          <div class="hobby-card glass-panel">
+            <div class="hobby-card-header">
+              <div class="hobby-icon-wrap"><i class="fa-solid fa-baseball-bat-ball"></i></div>
+              <div>
+                <h3>Watching Cricket</h3>
+                <p>Sports Analytics & Match Strategy</p>
+              </div>
+            </div>
+            <p class="hobby-desc">
+              Fascinated by cricket analytics, worm charts, wagon wheels, win probability models, and high-pressure strategic execution.
+            </p>
+
+            <!-- Interactive Match Win Probability / Strike Rate Simulator -->
+            <div class="cricket-analytics-box glass-panel">
+              <div class="match-scorecard-header">
+                <div>
+                  <span class="team-tag">TEAM IN</span>
+                  <strong>184/3 (17.4 Ov)</strong>
+                </div>
+                <div class="req-rate">Target: <strong>198</strong> • RRR: <strong>5.8</strong></div>
+              </div>
+
+              <div class="win-prob-bar-wrap">
+                <div class="prob-labels">
+                  <span>Win Probability: <strong>88.4%</strong></span>
+                  <span class="prob-tag win-tag"><i class="fa-solid fa-arrow-trend-up"></i> In Command</span>
+                </div>
+                <div class="prob-track">
+                  <div class="prob-fill" style="width: 88.4%;"></div>
+                </div>
+              </div>
+
+              <div class="cricket-mini-stats">
+                <div class="cstat">
+                  <span>Strike Rate</span>
+                  <strong>172.5</strong>
+                </div>
+                <div class="cstat">
+                  <span>Dot Ball %</span>
+                  <strong>18.2%</strong>
+                </div>
+                <div class="cstat">
+                  <span>Boundary %</span>
+                  <strong>24.6%</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & GET IN TOUCH SECTION -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-subtitle"><i class="fa-solid fa-handshake"></i> Let's Collaborate</div>
+          <h2 class="section-title">Get in <span class="gradient-text">Touch</span></h2>
+          <p class="section-desc">
+            Seeking opportunities to contribute to high-impact data-driven solutions and grow in a dynamic organization. Let's build the future together.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left: Contact Details Cards -->
+          <div class="contact-info-cards">
+            <div class="contact-method-card glass-panel">
+              <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div class="contact-meta">
+                <span class="meta-label">Email Directly</span>
+                <a href="mailto:kavarshini70@gmail.com" class="meta-value">kavarshini70@gmail.com</a>
+              </div>
+              <a href="mailto:kavarshini70@gmail.com" class="contact-quick-act" title="Send Email"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+
+            <div class="contact-method-card glass-panel">
+              <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+              <div class="contact-meta">
+                <span class="meta-label">Direct Phone</span>
+                <a href="tel:+919019565856" class="meta-value">+91-9019565856</a>
+              </div>
+              <a href="tel:+919019565856" class="contact-quick-act" title="Call Now"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+
+            <div class="contact-method-card glass-panel">
+              <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+              <div class="contact-meta">
+                <span class="meta-label">LinkedIn Profile</span>
+                <a href="https://www.linkedin.com/in/varshini-k-a-46965029a" target="_blank" rel="noopener noreferrer" class="meta-value">in/varshini-k-a-46965029a</a>
+              </div>
+              <a href="https://www.linkedin.com/in/varshini-k-a-46965029a" target="_blank" rel="noopener noreferrer" class="contact-quick-act" title="View LinkedIn"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+
+            <div class="contact-method-card glass-panel">
+              <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="contact-meta">
+                <span class="meta-label">Location</span>
+                <span class="meta-value">Bangalore, Karnataka, India</span>
+              </div>
+            </div>
+
+            <!-- Resume Action Card -->
+            <div class="resume-download-card glass-panel">
+              <div class="resume-meta">
+                <i class="fa-solid fa-file-pdf resume-icon"></i>
+                <div>
+                  <h4>Varshini_Resume_2026.pdf</h4>
+                  <p>BCA Data Science • Machine Learning & Analytics</p>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-block" onclick="openResumeModal()">
+                <i class="fa-solid fa-eye"></i> View & Print Resume
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Contact Form -->
+          <div class="contact-form-card glass-panel">
+            <h3 class="form-title"><i class="fa-solid fa-paper-plane"></i> Send a Message</h3>
+            <p class="form-subtitle">Have an opening, internship, or project? Drop a message below and I'll get back to you promptly!</p>
+
+            <form id="contactForm" onsubmit="event.preventDefault(); handleContactSubmit();">
+              <div class="form-group">
+                <label for="senderName">Your Full Name <span class="required">*</span></label>
+                <div class="input-with-icon">
+                  <i class="fa-solid fa-user"></i>
+                  <input type="text" id="senderName" required placeholder="e.g. Alex Henderson">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="senderEmail">Email Address <span class="required">*</span></label>
+                <div class="input-with-icon">
+                  <i class="fa-solid fa-envelope"></i>
+                  <input type="email" id="senderEmail" required placeholder="e.g. alex@company.com">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="senderSubject">Subject / Opportunity</label>
+                <div class="input-with-icon">
+                  <i class="fa-solid fa-tag"></i>
+                  <input type="text" id="senderSubject" placeholder="e.g. Data Science Role / ML Project">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="senderMessage">Message <span class="required">*</span></label>
+                <textarea id="senderMessage" rows="5" required placeholder="Describe your requirement, team, or opportunity..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block glow-btn" id="submitFormBtn">
+                <i class="fa-solid fa-paper-plane"></i> Dispatch Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <a href="#hero" class="brand-logo">
+          <span class="logo-bracket">&lt;</span>
+          <span class="logo-name">Varshini</span>
+          <span class="logo-highlight">.AI</span>
+          <span class="logo-bracket">/&gt;</span>
+        </a>
+        <p>Crafting intelligent, data-driven solutions with precision and empathy.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">3D Skills</a>
+        <a href="#projects">Live Projects</a>
+        <a href="#certifications">Certificates</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-right">
+        <p>&copy; 2026 Varshini K A. All rights reserved.</p>
+        <p class="credits">Built with Modern Vanilla Web Standards & Three.js 3D Acceleration.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODALS -->
+
+  <!-- 1. Interactive Skill Detail Modal -->
+  <div class="modal-overlay" id="skillModal">
+    <div class="modal-card glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon" id="modalSkillIcon"><i class="fa-brands fa-python"></i></span>
+          <div>
+            <h3 id="modalSkillTitle">Python</h3>
+            <p id="modalSkillCategory">Data Science & AI Engine</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="closeSkillModal()" aria-label="Close Modal">&times;</button>
+      </div>
+
+      <div class="modal-body" id="modalSkillBody">
+        <!-- Injected dynamically via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Certificate Detail Modal -->
+  <div class="modal-overlay" id="certModal">
+    <div class="modal-card glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon" id="modalCertIcon"><i class="fa-solid fa-certificate"></i></span>
+          <div>
+            <h3 id="modalCertTitle">Certificate Name</h3>
+            <p id="modalCertIssuer">Issuer</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="closeCertModal()" aria-label="Close Modal">&times;</button>
+      </div>
+
+      <div class="modal-body" id="modalCertBody">
+        <!-- Injected dynamically via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Resume Viewer & Print Modal -->
+  <div class="modal-overlay" id="resumeModal">
+    <div class="modal-card modal-large glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon"><i class="fa-solid fa-file-invoice"></i></span>
+          <div>
+            <h3>Varshini K A — Official Resume</h3>
+            <p>BCA (Data Science) Graduate • Presidency University</p>
+          </div>
+        </div>
+        <div class="modal-actions-right">
+          <button class="btn btn-primary btn-sm" onclick="window.print()">
+            <i class="fa-solid fa-print"></i> Print / Save as PDF
+          </button>
+          <button class="modal-close-btn" onclick="closeResumeModal()" aria-label="Close Modal">&times;</button>
+        </div>
+      </div>
+
+      <div class="modal-body print-resume-document" id="printableResumeDoc">
+        <div class="resume-paper">
+          <!-- Resume Header -->
+          <div class="r-header">
+            <h1 class="r-name">VARSHINI K A</h1>
+            <div class="r-role">BCA (Data Science) Graduate</div>
+            <div class="r-contact-row">
+              <span><i class="fa-solid fa-phone"></i> +91-9019565856</span>
+              <span>•</span>
+              <span><i class="fa-solid fa-envelope"></i> kavarshini70@gmail.com</span>
+              <span>•</span>
+              <span><i class="fa-brands fa-linkedin"></i> linkedin.com/in/varshini-k-a-46965029a</span>
+              <span>•</span>
+              <span><i class="fa-solid fa-location-dot"></i> Bangalore, India</span>
+            </div>
+          </div>
+
+          <!-- Professional Summary -->
+          <div class="r-section">
+            <h2 class="r-section-title">PROFESSIONAL SUMMARY</h2>
+            <p class="r-text">
+              BCA graduate in Data Science with a strong foundation in Data Analysis and Machine Learning. Proficient in Python, MySQL, and MS Excel with hands-on experience in building analytics and AI-powered projects. Skilled in cleaning, analyzing, and transforming data into meaningful insights to support decision-making. Detail-oriented problem solver with strong communication and teamwork skills. Seeking opportunities to contribute to data-driven solutions and grow in a dynamic organization.
+            </p>
+          </div>
+
+          <!-- Education -->
+          <div class="r-section">
+            <h2 class="r-section-title">EDUCATION</h2>
+            <div class="r-edu-entry">
+              <div class="r-entry-top">
+                <strong>BCA (Data Science)</strong> – Presidency University, Bangalore
+                <span class="r-score">CGPA: 8.2 | 2026</span>
+              </div>
+            </div>
+            <div class="r-edu-entry">
+              <div class="r-entry-top">
+                <strong>Class XII</strong> – BGS PU College
+                <span class="r-score">80% | 2023</span>
+              </div>
+            </div>
+            <div class="r-edu-entry">
+              <div class="r-entry-top">
+                <strong>Class X</strong> – Sri Vivekananda English Medium High School
+                <span class="r-score">94.6% | 2021</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technical Skills -->
+          <div class="r-section">
+            <h2 class="r-section-title">TECHNICAL SKILLS</h2>
+            <p class="r-text">
+              Python | C | HTML (Basic) | MySQL | Microsoft Excel | Machine Learning | Data Analysis | MS Office | AI Tools (ChatGPT, Claude AI, Gemini, Microsoft Copilot)
+            </p>
+          </div>
+
+          <!-- Projects -->
+          <div class="r-section">
+            <h2 class="r-section-title">PROJECTS</h2>
+            
+            <div class="r-project-entry">
+              <h3 class="r-project-name">Face Gesture-Based Virtual Mouse Using Machine Learning</h3>
+              <ul class="r-bullet-list">
+                <li>Developed an AI-based virtual mouse using Python, OpenCV, and MySQL.</li>
+                <li>Implemented facial landmark detection for cursor movement, clicking, and scrolling.</li>
+                <li>Applied computer vision techniques for real-time gesture recognition.</li>
+                <li>Enhanced accessibility through hands-free computer interaction.</li>
+                <li>Optimized system performance for smooth and accurate cursor control.</li>
+                <li>Designed a user-friendly interface for ease of use and better user experience.</li>
+                <li>Conducted testing and debugging to improve system reliability and accuracy.</li>
+              </ul>
+            </div>
+
+            <div class="r-project-entry">
+              <h3 class="r-project-name">AI-Powered Multi-Disease Prediction System</h3>
+              <ul class="r-bullet-list">
+                <li>Developed a healthcare prediction system using Python, Flask, Machine Learning, and MySQL.</li>
+                <li>Collected, processed, and analyzed healthcare data for multiple disease prediction.</li>
+                <li>Integrated machine learning models to improve prediction accuracy and reliability.</li>
+                <li>Applied data preprocessing techniques to handle missing values and improve model performance.</li>
+                <li>Generated insights and reports to support early disease detection and decision-making.</li>
+                <li>Ensured a responsive and user-friendly interface for healthcare professionals and users.</li>
+                <li>Tested and validated the system for accuracy, efficiency, and scalability.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Certificates -->
+          <div class="r-section">
+            <h2 class="r-section-title">CERTIFICATES</h2>
+            <ul class="r-bullet-list">
+              <li><strong>RDBMS Certification</strong> – Scaler</li>
+              <li><strong>Deep Learning for Developers</strong> – Infosys Springboard</li>
+              <li><strong>Machine Learning</strong> – Simplilearn</li>
+              <li><strong>Diploma in Microsoft Excel</strong> – Uniathena</li>
+            </ul>
+          </div>
+
+          <!-- Strengths -->
+          <div class="r-section">
+            <h2 class="r-section-title">STRENGTHS</h2>
+            <div class="r-strengths-grid">
+              <span>• Integrity and Confidentiality</span>
+              <span>• Time Management</span>
+              <span>• Communication</span>
+              <span>• Analytical Thinking</span>
+              <span>• Empathy and Patience</span>
+              <span>• Attention to Detail</span>
+            </div>
+          </div>
+
+          <!-- Hobbies -->
+          <div class="r-section">
+            <h2 class="r-section-title">HOBBIES</h2>
+            <p class="r-text">
+              Photo and Video Editing | Listening to Music | Watching Cricket
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
